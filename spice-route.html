@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spice Route Kitchen - Authentic North Indian Cuisine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #d4af37;
+      --secondary: #8b4513;
+      --bg-light: #fef8f0;
+      --bg-cream: #fff9ed;
+      --text-dark: #2c1810;
+      --text-medium: #5d4e37;
+      --border: #e8dcc8;
+      --accent-red: #c41e3a;
+      --accent-green: #2d6a4f;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(254, 248, 240, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(212, 175, 55, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Merriweather', serif;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      color: var(--text-medium);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+      position: relative;
+      background: linear-gradient(135deg, var(--bg-cream) 0%, #fff3e0 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 69, 19, 0.1), transparent);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin-top: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      color: var(--secondary);
+      text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.2);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-medium);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--primary);
+      color: var(--text-dark);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn:hover {
+      background: var(--secondary);
+      color: var(--bg-light);
+      border-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+      margin-left: 1rem;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--secondary);
+      color: var(--bg-light);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: -50px auto 4rem;
+      padding: 0 5%;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Merriweather', serif;
+    }
+
+    .stat-label {
+      color: var(--text-medium);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    section {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 5rem 5%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .section-subtitle {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-content h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+    }
+
+    .about-content p {
+      color: var(--text-medium);
+      margin-bottom: 1.5rem;
+      line-height: 1.9;
+    }
+
+    .about-image {
+      height: 500px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(139, 69, 19, 0.3);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 40%, rgba(255,255,255,0.2), transparent);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .product-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .product-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+    }
+
+    .product-img {
+      height: 220px;
+      background: linear-gradient(135deg, #ffe5b4, #ffd89b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3), transparent);
+    }
+
+    .product-info {
+      padding: 2rem;
+    }
+
+    .product-info h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+
+    .product-info p {
+      color: var(--text-medium);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .order-btn {
+      padding: 0.6rem 1.8rem;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .order-btn:hover {
+      background: var(--primary);
+      color: var(--text-dark);
+      transform: scale(1.05);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .gallery-item {
+      height: 320px;
+      background: linear-gradient(135deg, #f4e4c1, #e6d5b8);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border: 2px solid var(--border);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      border-color: var(--primary);
+    }
+
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(255,255,255,0.3), transparent);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .testimonial {
+      background: white;
+      border: 2px solid var(--border);
+      padding: 2.5rem;
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 25px;
+      font-size: 5rem;
+      color: var(--primary);
+      opacity: 0.3;
+      font-family: 'Merriweather', serif;
+    }
+
+    .stars {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      color: var(--text-medium);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .pricing-card.featured {
+      border: 3px solid var(--primary);
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+    }
+
+    .pricing-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .pricing-card h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .pricing-card .price {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin: 1.5rem 0;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .pricing-card li {
+      padding: 0.6rem 0;
+      color: var(--text-medium);
+    }
+
+    .pricing-card li i {
+      color: var(--accent-green);
+      margin-right: 0.5rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-form {
+      background: white;
+      border: 2px solid var(--border);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-medium);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      background: var(--bg-cream);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-dark);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .contact-info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: white;
+      border: 2px solid var(--border);
+      padding: 2rem;
+      border-radius: 20px;
+      display: flex;
+      gap: 1.5rem;
+      align-items: start;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .info-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      color: white;
+    }
+
+    .info-text h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+
+    .info-text p {
+      color: var(--text-medium);
+      line-height: 1.7;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--bg-cream);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      background: white;
+      border-top: 2px solid var(--border);
+      padding: 3rem 5%;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-medium);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    .copyright {
+      color: var(--text-medium);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 968px) {
+      .nav-menu {
+        gap: 1.5rem;
+        font-size: 0.85rem;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 4rem 5%;
+      }
+
+      .btn-outline {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-menu {
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo"><i class="fas fa-pepper-hot"></i> Spice Route</div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Authentic North Indian Cuisine</h1>
+      <p>Experience the rich flavors of traditional recipes passed down through generations. Fresh ingredients, aromatic spices, home-style cooking.</p>
+      <a href="#contact" class="btn">Reserve Table</a>
+      <a href="#menu" class="btn btn-outline">View Menu</a>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Years Serving</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">8000+</div>
+      <div class="stat-label">Happy Diners</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">75+</div>
+      <div class="stat-label">Dishes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Fresh Daily</div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="section-header">
+      <h2 class="section-title">About Spice Route Kitchen</h2>
+      <p class="section-subtitle">Bringing authentic flavors to Charkop since 2010</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-content">
+        <h3>Our Journey</h3>
+        <p>Established in 2010, Spice Route Kitchen has been Charkop's favorite destination for authentic North Indian cuisine. We started as a small family restaurant with a vision to serve traditional home-cooked meals that remind people of their roots.</p>
+        <p>Our chefs bring decades of culinary expertise, preparing each dish with carefully selected spices and the freshest ingredients. From rich butter chicken to aromatic biryanis, every meal is a celebration of India's diverse culinary heritage.</p>
+        <p>We take pride in our tandoor specialties, hand-rolled breads, and signature curries that have become neighborhood favorites. Whether it's a family dinner or a special celebration, we're here to make every meal memorable.</p>
+        <a href="#contact" class="btn">Visit Us Today</a>
+      </div>
+      <div class="about-image">
+        🍛
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="section-header">
+      <h2 class="section-title">Our Menu</h2>
+      <p class="section-subtitle">Handcrafted dishes with authentic flavors</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img">🍗</div>
+        <div class="product-info">
+          <h3>Tandoori Specials</h3>
+          <p>Tandoori chicken, paneer tikka, kebabs fresh from clay oven</p>
+          <div class="product-price">
+            <span class="price">₹280+</span>
+            <button class="order-btn">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🍛</div>
+        <div class="product-info">
+          <h3>Curry Delights</h3>
+          <p>Butter chicken, dal makhani, paneer masala with rich gravies</p>
+          <div class="product-price">
+            <span class="price">₹220</span>
+            <button class="order-btn">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🍚</div>
+        <div class="product-info">
+          <h3>Biryani & Rice</h3>
+          <p>Hyderabadi dum biryani, pulao, jeera rice - aromatic & flavorful</p>
+          <div class="product-price">
+            <span class="price">₹250</span>
+            <button class="order-btn">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🫓</div>
+        <div class="product-info">
+          <h3>Fresh Breads</h3>
+          <p>Butter naan, roti, paratha, kulcha - hand-made daily</p>
+          <div class="product-price">
+            <span class="price">₹45</span>
+            <button class="order-btn">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🥗</div>
+        <div class="product-info">
+          <h3>Appetizers</h3>
+          <p>Samosas, pakoras, chaat, fresh salads and more</p>
+          <div class="product-price">
+            <span class="price">₹80</span>
+            <button class="order-btn">Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🍨</div>
+        <div class="product-info">
+          <h3>Desserts</h3>
+          <p>Gulab jamun, rasmalai, kulfi - traditional Indian sweets</p>
+          <div class="product-price">
+            <span class="price">₹120</span>
+            <button class="order-btn">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="section-header">
+      <h2 class="section-title">Food Gallery</h2>
+      <p class="section-subtitle">A visual feast of our specialties</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">🥘</div>
+      <div class="gallery-item">🍢</div>
+      <div class="gallery-item">🥙</div>
+      <div class="gallery-item">🍝</div>
+      <div class="gallery-item">🌮</div>
+      <div class="gallery-item">🍲</div>
+      <div class="gallery-item">🥟</div>
+      <div class="gallery-item">🍜</div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-header">
+      <h2 class="section-title">Customer Reviews</h2>
+      <p class="section-subtitle">What our patrons are saying</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Best North Indian food in Charkop! The butter chicken is absolutely divine and the naans are perfectly soft. The ambiance is warm and the staff is very courteous. We come here every weekend!</p>
+        <p class="testimonial-author">— Rajesh Patel</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Celebrated my parents' anniversary here and the experience was wonderful! They arranged everything beautifully and the food was exceptional. The biryani and kebabs were outstanding. Highly recommended!</p>
+        <p class="testimonial-author">— Neha & Vikram Singh</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Finally found a place that serves authentic home-style Punjabi food! The dal makhani tastes just like my grandmother's recipe. Great portions, reasonable prices, and consistent quality. A neighborhood gem!</p>
+        <p class="testimonial-author">— Amit Kapoor</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="section-header">
+      <h2 class="section-title">Family Packages</h2>
+      <p class="section-subtitle">Special combo meals for every occasion</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Classic</h3>
+        <div class="price">₹850</div>
+        <ul>
+          <li><i class="fas fa-check"></i> 2 Curries</li>
+          <li><i class="fas fa-check"></i> 4 Naans/Rotis</li>
+          <li><i class="fas fa-check"></i> Rice/Biryani</li>
+          <li><i class="fas fa-check"></i> Raita & Salad</li>
+          <li><i class="fas fa-check"></i> Serves 2-3</li>
+        </ul>
+        <button class="btn">Order Now</button>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Royal Feast</h3>
+        <div class="price">₹1800</div>
+        <ul>
+          <li><i class="fas fa-check"></i> 3 Curries</li>
+          <li><i class="fas fa-check"></i> Tandoori Platter</li>
+          <li><i class="fas fa-check"></i> 8 Breads</li>
+          <li><i class="fas fa-check"></i> Biryani</li>
+          <li><i class="fas fa-check"></i> Dessert</li>
+          <li><i class="fas fa-check"></i> Serves 4-5</li>
+        </ul>
+        <button class="btn">Order Now</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Party Pack</h3>
+        <div class="price">₹4500</div>
+        <ul>
+          <li><i class="fas fa-check"></i> 5 Curries</li>
+          <li><i class="fas fa-check"></i> 2 Tandoori Platters</li>
+          <li><i class="fas fa-check"></i> 15 Breads</li>
+          <li><i class="fas fa-check"></i> 2 Biryanis</li>
+          <li><i class="fas fa-check"></i> Appetizers</li>
+          <li><i class="fas fa-check"></i> Desserts</li>
+          <li><i class="fas fa-check"></i> Serves 8-10</li>
+        </ul>
+        <button class="btn">Order Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-header">
+      <h2 class="section-title">Visit or Contact Us</h2>
+      <p class="section-subtitle">We'd love to serve you</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="product">Service Type</label>
+            <select id="product" required>
+              <option value="">Select service</option>
+              <option>Dine-In Reservation</option>
+              <option>Takeaway Order</option>
+              <option>Catering Service</option>
+              <option>Party Booking</option>
+              <option>Home Delivery</option>
+              <option>Other Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+      <div class="contact-info-grid">
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="info-text">
+            <h4>Visit Our Restaurant</h4>
+            <p>Spice Route Kitchen,<br>Shop 12, Shanti Shopping Centre,<br>Charkop Sector 8, Kandivali West,<br>Mumbai, Maharashtra 400067</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-phone"></i></div>
+          <div class="info-text">
+            <h4>Call Us</h4>
+            <p>+91 98765 43210<br>Daily: 11:30 AM - 11:00 PM</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-clock"></i></div>
+          <div class="info-text">
+            <h4>Opening Hours</h4>
+            <p>Monday - Sunday: 11:30 AM - 11:00 PM<br>Lunch: 12:00 PM - 3:30 PM<br>Dinner: 7:00 PM - 11:00 PM</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info-text">
+            <h4>Email & Social</h4>
+            <p>contact@spiceroutekitchen.com</p>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" aria-label="Zomato"><i class="fas fa-utensils"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="logo" style="margin-bottom: 2rem; font-size: 2rem;"><i class="fas fa-pepper-hot"></i> Spice Route Kitchen</div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Spice Route Kitchen. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Crafted with 🌶️ and passion for authentic flavors</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

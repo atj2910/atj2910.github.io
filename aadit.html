@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadit Manghnani - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .resume-wrapper {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .resume-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            z-index: 10;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .name {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .objective {
+            font-size: 1.2em;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            min-height: 600px;
+        }
+
+        .sidebar {
+            background: #f8fafc;
+            padding: 50px 40px;
+            position: relative;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .content-area {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .section-title i {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .education-timeline,
+        .experience-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .education-timeline::before,
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-left: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px white, 0 0 0 6px #667eea;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .degree-title,
+        .position-title {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .institution,
+        .company {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .duration {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .grade,
+        .details {
+            color: #4a5568;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .course-list {
+            margin-top: 15px;
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .course-list strong {
+            color: #2d3748;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .responsibilities {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .responsibilities li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .responsibilities li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card h4 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1976d2;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: linear-gradient(135deg, #1976d2, #1565c0);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .traits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .trait-item {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            color: #e65100;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .trait-item:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #e65100, #ff6f00);
+            color: white;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .interest-category {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .interest-category h4 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .interest-category i {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .interest-list {
+            list-style: none;
+        }
+
+        .interest-list li {
+            padding: 8px 0;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .floating-nav {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 25px;
+            padding: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            border: 1px solid #e2e8f0;
+        }
+
+        .nav-item {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin: 5px 0;
+            background: #f7fafc;
+            color: #4a5568;
+            border-radius: 15px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-section {
+                padding: 40px 30px;
+            }
+            
+            .name {
+                font-size: 2.5em;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar,
+            .content-area {
+                padding: 30px 20px;
+            }
+            
+            .floating-nav {
+                display: none;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .resume-wrapper {
+            animation: slideInFromLeft 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="resume-wrapper">
+            <div class="hero-section" id="about">
+                <div class="hero-content">
+                    <div class="profile-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h1 class="name">Aadit Manghnani</h1>
+                    <p class="objective">
+                        I am looking to develop core business and analytical skills through practical experiences, while exploring diverse business functions and industries. I aim to contribute through real-world projects, strengthen my problem-solving and collaboration abilities, and build a versatile foundation for future professional growth.
+                    </p>
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <i class="fas fa-phone"></i>
+                            <div>9820040199</div>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <div>manghnaniaadit@gmail.com</div>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>Mumbai, Maharashtra</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="sidebar">
+                    <div class="section" id="skills">
+                        <h3 class="section-title">
+                            <i class="fas fa-cogs"></i>
+                            Skills
+                        </h3>
+                        <div class="skills-container">
+                            <div class="skill-card">
+                                <h4>Technical</h4>
+                                <div class="skill-list">
+                                    <span class="skill-badge">Excel</span>
+                                    <span class="skill-badge">PowerPoint</span>
+                                    <span class="skill-badge">Word</span>
+                                    <span class="skill-badge">Canva</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Business</h4>
+                                <div class="skill-list">
+                                    <span class="skill-badge">Team Collaboration</span>
+                                    <span class="skill-badge">Time Management</span>
+                                    <span class="skill-badge">Coordination</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="traits-list">
+                            <div class="trait-item">Dedication</div>
+                            <div class="trait-item">Punctuality</div>
+                            <div class="trait-item">Curiosity</div>
+                            <div class="trait-item">Adaptability</div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="interests">
+                        <h3 class="section-title">
+                            <i class="fas fa-heart"></i>
+                            Interests
+                        </h3>
+                        <div class="interests-grid">
+                            <div class="interest-category">
+                                <h4><i class="fas fa-language"></i> Languages</h4>
+                                <ul class="interest-list">
+                                    <li>English (Fluent)</li>
+                                    <li>Hindi (Fluent)</li>
+                                    <li>German (Learning)</li>
+                                </ul>
+                            </div>
+                            <div class="interest-category">
+                                <h4><i class="fas fa-globe"></i> Academic</h4>
+                                <ul class="interest-list">
+                                    <li>Geopolitics</li>
+                                    <li>Geoeconomics</li>
+                                </ul>
+                            </div>
+                            <div class="interest-category">
+                                <h4><i class="fas fa-gamepad"></i> Hobbies</h4>
+                                <ul class="interest-list">
+                                    <li>Trekking</li>
+                                    <li>Chess</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-area">
+                    <div class="section" id="education">
+                        <h3 class="section-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            Education
+                        </h3>
+                        <div class="education-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-header">
+                                    <div>
+                                        <div class="degree-title">Bachelor of Business Administration (BBA)</div>
+                                        <div class="institution">NMIMS (ASMSOC), Mumbai</div>
+                                    </div>
+                                    <div class="duration">May '27</div>
+                                </div>
+                                <div class="grade">CGPA: 8.5</div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-header">
+                                    <div>
+                                        <div class="degree-title">BBA in Digital Business & Entrepreneurship</div>
+                                        <div class="institution">Indian Institute of Management, Bangalore</div>
+                                    </div>
+                                    <div class="duration">Sept '27</div>
+                                </div>
+                                <div class="course-list">
+                                    <strong>Relevant Coursework:</strong>
+                                    Financial and Cost Accounting, Corporate Communication, Creative Mindset and Innovative Thinking, Entrepreneurial Mindset
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-header">
+                                    <div>
+                                        <div class="degree-title">Summer Program in Management (SPM)</div>
+                                        <div class="institution">Indian Institute of Management, Udaipur</div>
+                                    </div>
+                                    <div class="duration">June 2025</div>
+                                </div>
+                                <div class="course-list">
+                                    <strong>Topics:</strong>
+                                    Global Business Environment, Corporate Strategy, Data Analytics, Leadership & Communication, Financial Perspectives in Organizations
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="experience">
+                        <h3 class="section-title">
+                            <i class="fas fa-briefcase"></i>
+                            Experience & Leadership
+                        </h3>
+                        <div class="experience-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-header">
+                                    <div>
+                                        <div class="position-title">NGO Internship</div>
+                                        <div class="company">Yasham Foundation, Mumbai</div>
+                                    </div>
+                                    <div class="duration">Jan 2025 – Mar 2025</div>
+                                </div>
+                                <ul class="responsibilities">
+                                    <li>Supported education and welfare programs for underprivileged children in Mumbai</li>
+                                    <li>Coordinated with community stakeholders to improve outreach effectiveness</li>
+                                </ul>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-header">
+                                    <div>
+                                        <div class="position-title">Member – Security</div>
+                                        <div class="company">Vaayu, NMIMS (ASMSOC)</div>
+                                    </div>
+                                    <div class="duration">July 2024 – Present</div>
+                                </div>
+                                <ul class="responsibilities">
+                                    <li>Handled real-time problem-solving and crowd control under high-pressure environments during event execution</li>
+                                    <li>Led a team of volunteers to scale outreach campaign across multiple colleges</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-nav">
+        <a href="#about" class="nav-item" title="About">
+            <i class="fas fa-user"></i>
+        </a>
+        <a href="#education" class="nav-item" title="Education">
+            <i class="fas fa-graduation-cap"></i>
+        </a>
+        <a href="#experience" class="nav-item" title="Experience">
+            <i class="fas fa-briefcase"></i>
+        </a>
+        <a href="#skills" class="nav-item" title="Skills">
+            <i class="fas fa-cogs"></i>
+        </a>
+        <a href="#interests" class="nav-item" title="Interests">
+            <i class="fas fa-heart"></i>
+        </a>
+    </div>
+
+    <script>
+        // Smooth scrolling functionality
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe timeline items for animation
+        document.querySelectorAll('.timeline-item, .skill-card, .interest-category').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+
+        // Update active navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${currentSection}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Add hover effects to timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(10px) scale(1)';
+            });
+        });
+
+        // Print functionality
+        function printResume() {
+            window.print();
+        }
+
+        // Add print button to floating nav
+        const printBtn = document.createElement('a');
+        printBtn.className = 'nav-item';
+        printBtn.title = 'Print Resume';
+        printBtn.innerHTML = '<i class="fas fa-print"></i>';
+        printBtn.onclick = printResume;
+        document.querySelector('.floating-nav').appendChild(printBtn);
+    </script>
+</body>
+</html>
